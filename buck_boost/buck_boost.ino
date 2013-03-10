@@ -1,8 +1,8 @@
-#define VOUT 4.0
-#define ADC_COUNT (int) (VOUT/5.0*1023.0/5.0)
+#define VOUT (4.0)
+#define ADC_COUNT ((int) (VOUT/5.0*1023.0/5.0))
+#define PGAIN (1)
 
 int duty = 0;
-float pgain = 1;
 int count = 0;
 void setup() {
   pinMode(3, OUTPUT);
@@ -18,7 +18,7 @@ void loop() {
     Serial.println(count);
     Serial.println();
   };*/
-  duty += (ADC_COUNT - val) * pgain;
+  duty += (ADC_COUNT - val) * PGAIN;
   if (duty < 0)
     duty = 0;
   if (duty > 1023)
